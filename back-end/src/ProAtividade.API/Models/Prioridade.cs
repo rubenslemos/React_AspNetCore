@@ -2,7 +2,7 @@ namespace ProAtividade.API.Models
 {
     public enum Prioridade
     {
-        NaoDefinido,
+        Indefinido,
         Baixa,
         Normal,
         Alta

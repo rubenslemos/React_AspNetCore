@@ -49,20 +49,19 @@ export default function AtividadeForm (props) {
 
   return (
     <>
-      <h2 className='pb-3 pt-3'>Atividade {atividade.id !== 0 ? atividade.id : ''}</h2>
       <form className="row g-3" onSubmit={handleSubmit}> 
-        <div className="col-md-10">
+        <div className="col-md-8">
           <label className="form-label">Titulo</label>
           <input 
             type="text" 
             name="titulo" 
-            value={atividade.titulo} 
+            value={atividade.titulo === undefined ? atividade.titulo='' : atividade.titulo} 
             onChange={InputTextHandler} 
             id="titulo" 
             className="form-control"
           />
         </div>        
-        <div className="col-md-2">
+        <div className="col-md-4">
           <label className="form-label">Prioridade</label>
           <select 
             name="prioridade" 
@@ -71,10 +70,10 @@ export default function AtividadeForm (props) {
             id="prioridade" 
             className="form-select" 
           >
-            <option value="0">Selecionar...</option>
-            <option value="1">Baixa</option>
-            <option value="2">Normal</option>
-            <option value="3">Alta</option>
+            <option value="Indefinido">Selecionar...</option>
+            <option value="Baixa">Baixa</option>
+            <option value="Normal">Normal</option>
+            <option value="Alta">Alta</option>
           </select>
         </div>
         <div className="col-md-12">
@@ -82,7 +81,7 @@ export default function AtividadeForm (props) {
           <textarea 
             type="text" 
             name="descricao" 
-            value={atividade.descricao} 
+            value={atividade.descricao === undefined ? atividade.descricao='' : atividade.descricao} 
             onChange={InputTextHandler} 
             id="descricao" 
             className="form-control"
@@ -93,25 +92,25 @@ export default function AtividadeForm (props) {
           {
             atividade.id === 0 ?
             <button 
-            className="btn btn-sm btn-outline-secondary" 
-            type="submit"
+              className="btn btn-sm btn-outline-success" 
+              type="submit"
             >
               <i className="fas fa-plus me-2"></i>
-              Atividade
+              Salvar
             </button>
             :
             <>
               <button 
                 className="btn btn-sm btn-outline-success" 
                 type="submit"
-                >
+              >
                 <i className="fas fa-plus me-2"></i>
                 Salvar
               </button>
               <button 
                 className="ms-2 btn btn-sm btn-outline-warning" 
                 onClick={handleCancelar}
-                >
+              >
                 <i className="fas fa-minus me-2"></i>
                 Cancelar
               </button>
